@@ -24,7 +24,7 @@ npm install
 node server.js
 ```
 
-Then open `http://localhost:3000` in your browser (or the port printed in the terminal).
+Then open `http://localhost:8080` in your browser.
 
 ## Project Structure
 
