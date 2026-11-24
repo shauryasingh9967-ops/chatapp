@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Huddle</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<section id="gate">
+  <div class="gate-box">
+    <div class="wordmark">Huddle</div>
+    <p>Chat with the whole class, or make a room just for your people.</p>
+    <form id="gate-form">
+      <input id="name" maxlength="20" placeholder="Your name" autocomplete="nickname" aria-label="Your name" required>
+      <button class="btn lemon">Start chatting</button>
+    </form>
+    <div id="gate-err" class="err" role="alert"></div>
+  </div>
+</section>
+
+<div id="app" hidden>
+  <aside id="side">
+    <div class="brand">Huddle</div>
+    <div class="me">
+      <span id="me-av" class="av"></span>
+      <div><b id="me-name"></b><small>You are online</small></div>
+    </div>
+    <nav id="side-list" aria-label="Chats"></nav>
+    <button class="btn lemon" id="open-dlg">Create or join a room</button>
+  </aside>
+
+  <main id="chat">
+    <header>
+      <button id="menu" class="icon" aria-label="Open chats">&#9776;</button>
+      <div class="ttl"><h1 id="title"></h1><p id="sub"></p></div>
+      <div id="head-actions"></div>
+    </header>
+    <div id="feed" role="log" aria-live="polite"></div>
+    <div id="typing" aria-live="polite"></div>
+    <form id="composer">
+      <input id="text" autocomplete="off" maxlength="1000" placeholder="Write a message" aria-label="Message">
+      <button class="send" aria-label="Send message">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+      </button>
+    </form>
+  </main>
+
+  <aside id="people">
+    <h2 id="people-h"></h2>
+    <ul id="people-list"></ul>
+  </aside>
+</div>
+
+<dialog id="dlg">
+  <form id="create-form">
+    <h2>Create a room</h2>
+    <p>You get a code. Anyone you give it to can join.</p>
+    <input id="room-name" maxlength="24" placeholder="Room name, e.g. Project team" aria-label="Room name">
+    <button class="btn cobalt">Create room</button>
+  </form>
+  <form id="join-form">
+    <h2>Join with a code</h2>
+    <input id="room-code" maxlength="5" placeholder="5-letter code" aria-label="Room code" autocomplete="off" required>
+    <button class="btn cobalt">Join room</button>
+  </form>
+  <div id="dlg-err" class="err" role="alert"></div>
+  <button id="close-dlg" class="btn ghost" type="button">Close</button>
+</dialog>
+
+<div id="toast" role="status"></div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
